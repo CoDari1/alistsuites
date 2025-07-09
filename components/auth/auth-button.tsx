@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -11,7 +11,7 @@ const supabase = createClient(
 );
 
 export function AuthButton() {
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         supabase.auth.getUser().then(({ data }) => setUser(data.user));
