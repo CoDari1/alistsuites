@@ -9,8 +9,7 @@ const publicPaths = [
   "/suites",
   "/amenities",
   "/gallery",
-  "/login",
-  "/register",
+  "/auth",
 ];
 
 export async function middleware(request: NextRequest) {
