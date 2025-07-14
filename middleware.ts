@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   const isPublicPath = publicPaths.some(
-    (publicPath) => path === publicPath || path.startsWith(`${publicPath}/`)
+      (publicPath) => path === publicPath || path.startsWith(`${publicPath}/`)
   );
 
   const token = request.cookies.get("token")?.value || "";
