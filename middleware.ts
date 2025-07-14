@@ -19,14 +19,8 @@ export async function middleware(request: NextRequest) {
       (publicPath) => path === publicPath || path.startsWith(`${publicPath}/`)
   );
 
-  const token = request.cookies.get("token")?.value || "";
-
   if (isPublicPath) {
     return NextResponse.next();
-  }
-
-  if (!token) {
-    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   return await updateSession(request);
