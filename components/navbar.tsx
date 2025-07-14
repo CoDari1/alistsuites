@@ -35,7 +35,7 @@ export default function Navigation() {
                         <span className="relative z-10">A-List Suites</span>
                         <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
                     </Link>
-                    <div className="hidden md:flex items-center space-x-1">
+                    <div className="hidden md:flex items-center space-x-2">
                         {[
                             { href: '/suites', label: 'Suites' },
                             { href: '/apply', label: 'Apply' },
@@ -44,9 +44,9 @@ export default function Navigation() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group"
+                                className="px-2 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative group"
                             >
-                <span className={`relative z-10 ${
+                                <span className={`relative z-10 ${
                     isActivePath(item.href)
                         ? 'text-white'
                         : 'text-gray-300 group-hover:text-white'
@@ -59,8 +59,8 @@ export default function Navigation() {
                                 )}
                             </Link>
                         ))}
-                        <div className="ml-4">
-                        <AuthButton/>
+                        <div>
+                            <AuthButton/>
                         </div>
                     </div>
                     <div className="md:hidden">

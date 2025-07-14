@@ -1,21 +1,14 @@
 "use client";
 
 import { cn } from "@/app/lib/utils";
-import { createClient } from "@/app/lib/supabase/client";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { supabase } from "@/app/lib/supabase/client";
 export function LoginForm({
   className,
   ...props
@@ -28,7 +21,6 @@ export function LoginForm({
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
     setIsLoading(true);
     setError(null);
 
@@ -39,13 +31,29 @@ export function LoginForm({
       });
       if (error) throw error;
       // Update this route to redirect to an authenticated route. The user already has an active session.
-      router.push("/protected");
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }
   };
+
+  const checkSession = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+        // If the user is already logged in, redirect to a protected route
+        router.push("/protected");
+    }
+    else {
+        // If not logged in, you can redirect to the login page or stay on the current page
+        console.log("No active session found, user is not logged in.");
+    }
+  }
+
+  useEffect(() => {
+    checkSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
