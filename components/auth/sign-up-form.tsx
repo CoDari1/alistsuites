@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+
 export function SignUpForm({
   className,
   ...props
@@ -104,8 +104,6 @@ export function SignUpForm({
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Creating an account..." : "Sign up"}
               </Button>
-              
-              <HCaptcha sitekey={'6e34143e-98a8-4b6e-a794-e2f892260250'}/>
             </div>
             <div className="mt-4 text-center text-sm">
               Already have an account?{" "}
