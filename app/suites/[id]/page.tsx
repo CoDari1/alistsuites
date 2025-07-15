@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client'
 
 import React, { useState } from 'react'
@@ -364,13 +363,18 @@ const suiteData = {
   }
 }
 
-export default function SuiteDetailPage({ params }: { params: { id: string } }) {
-  const router = useRouter()
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
+type SuiteDetailPageProps = {
+  params: {
+    id: string;
+  };
+};
 
-  // Get suite data based on ID
-  const suiteId = parseInt(params.id)
-  const suite = suiteData[suiteId as keyof typeof suiteData]
+export default function SuiteDetailPage({ params }: SuiteDetailPageProps) {
+  const router = useRouter();
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const suiteId = parseInt(params.id);
+  const suite = suiteData[suiteId as keyof typeof suiteData];
 
   // Handle non-existent suite
   if (!suite) {
