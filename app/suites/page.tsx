@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { FaWifi, FaParking, FaChair, FaLeaf, FaKey, FaLock } from 'react-icons/fa'
 import { MdCleaningServices, MdMeetingRoom } from 'react-icons/md'
@@ -230,57 +231,58 @@ export default function Suites() {
 								return true
 							})
 							.map(suite => (
-								<motion.div
-									key={suite.id}
-									className="bg-[#3a3a42] rounded-xl overflow-hidden shadow-xl hover:transform hover:scale-[1.02] transition-transform duration-300"
-									whileHover={{ y: -5 }}
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.5 }}
-								>
-									<div className="relative h-64 w-full">
-										<Image
-											src={suite.image}
-											alt={suite.name}
-											fill
-											style={{ objectFit: 'cover' }}
-										/>
-										<div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-											{suite.availability}
+								<Link key={suite.id} href={`/suites/${suite.id}`} className="block">
+									<motion.div
+										className="bg-[#3a3a42] rounded-xl overflow-hidden shadow-xl hover:transform hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+										whileHover={{ y: -5 }}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.5 }}
+									>
+										<div className="relative h-64 w-full">
+											<Image
+												src={suite.image}
+												alt={suite.name}
+												fill
+												style={{ objectFit: 'cover' }}
+											/>
+											<div className="absolute top-3 right-3 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+												{suite.availability}
+											</div>
 										</div>
-									</div>
-									<div className="p-7">
-										<h3 className="text-xl font-bold mb-3 text-white">
-											{suite.name}
-										</h3>
-										<div className="flex justify-between mb-4">
-											<span className="text-gray-300">{suite.size}</span>
-											<span className="font-semibold text-purple-400">
-												{suite.price}
-											</span>
+										<div className="p-7">
+											<h3 className="text-xl font-bold mb-3 text-white">
+												{suite.name}
+											</h3>
+											<div className="flex justify-between mb-4">
+												<span className="text-gray-300">{suite.size}</span>
+												<span className="font-semibold text-purple-400">
+                          {suite.price}
+                        </span>
+											</div>
+											<div className="mb-5">
+												<h4 className="font-medium mb-3 text-white">
+													Suite Features:
+												</h4>
+												<ul className="grid grid-cols-2 gap-x-2 gap-y-2">
+													{suite.amenities.map((amenity, index) => (
+														<li
+															key={index}
+															className="text-sm text-gray-300 flex items-center"
+														>
+															<span className="mr-2 text-purple-400">✓</span> {amenity}
+														</li>
+													))}
+												</ul>
+											</div>
+											<button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg transition mt-4 font-medium">
+												{suite.availability === 'Available Now'
+													? 'Schedule Tour'
+													: 'Join Waitlist'}
+											</button>
 										</div>
-										<div className="mb-5">
-											<h4 className="font-medium mb-3 text-white">
-												Suite Features:
-											</h4>
-											<ul className="grid grid-cols-2 gap-x-2 gap-y-2">
-												{suite.amenities.map((amenity, index) => (
-													<li
-														key={index}
-														className="text-sm text-gray-300 flex items-center"
-													>
-														<span className="mr-2 text-purple-400">✓</span> {amenity}
-													</li>
-												))}
-											</ul>
-										</div>
-										<button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-lg transition mt-4 font-medium">
-											{suite.availability === 'Available Now'
-												? 'Schedule Tour'
-												: 'Join Waitlist'}
-										</button>
-									</div>
-								</motion.div>
+									</motion.div>
+								</Link>
 							))}
 					</div>
 				</div>
