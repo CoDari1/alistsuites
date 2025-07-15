@@ -552,7 +552,7 @@ export default function SuiteDetailPage({ params }: { params: { id: string } }) 
                   <FaStar key={i} className="text-yellow-400 mr-1" />
                 ))}
               </div>
-              <p className="text-gray-300 italic">"{testimonial.text}"</p>
+              <p className="text-gray-300 italic">&quot;{testimonial.text}&quot;</p>
             </div>
           ))}
         </div>
