@@ -1,26 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, use } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import {
-  FaWifi,
-  FaParking,
-  FaChair,
-  FaLeaf,
-  FaKey,
-  FaLock,
-  FaRegCalendarAlt,
-  FaArrowLeft,
-  FaStar,
-  FaRuler,
-  FaDollarSign,
-  FaClock
-} from 'react-icons/fa'
+import { FaWifi, FaParking, FaChair, FaLeaf, FaKey, FaLock, FaRegCalendarAlt, FaArrowLeft, FaStar, FaRuler, FaDollarSign, FaClock } from 'react-icons/fa'
 import { MdCleaningServices, MdMeetingRoom, MdLocationOn, MdPhotoLibrary } from 'react-icons/md'
-
 // Mock data - in a real app, you would fetch this from an API based on the ID
 const suiteData = {
   1: {
@@ -362,19 +348,20 @@ const suiteData = {
     ]
   }
 }
-
 type SuiteDetailPageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>; // params is now a Promise wrapping the object
 };
 
 export default function SuiteDetailPage({ params }: SuiteDetailPageProps) {
-  const router = useRouter();
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-  const suiteId = parseInt(params.id);
+  // Use React.use() to unwrap the params Promise and get the synchronous value
+  const resolvedParams = use(params);
+  const suiteId = parseInt(resolvedParams.id); // Access the id after resolving the Promise
   const suite = suiteData[suiteId as keyof typeof suiteData];
+
+  const router = useRouter(); // Initialize useRouter hook
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   // Handle non-existent suite
   if (!suite) {
