@@ -28,7 +28,6 @@ export function AuthButton() {
     if (user) {
         return (
             <div className="flex items-center gap-4">
-                Hey, {user.email}!
                 <Button size="lg" variant="outline" onClick={() => supabase.auth.signOut()}>
                     Logout
                 </Button>
