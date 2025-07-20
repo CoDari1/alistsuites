@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { supabase } from '@/app/lib/supabase/client';
 
-export async function isUserAdmin(userId: string): Promise<boolean> {
+const isUserAdmin = async (userId: string): Promise<boolean> => {
     if (!userId) {
         console.error('No userId provided');
         return false;
