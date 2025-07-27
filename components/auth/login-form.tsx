@@ -31,7 +31,22 @@ export function LoginForm({
         password,
       });
       if (error) throw error;
-      // Update this route to redirect to an authenticated route. The user already has an active session.
+      // Fetch user info to check role
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data, error: userError } = await supabase
+          .from('users')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+        if (userError) throw userError;
+        if (data?.role === 'ADMIN') {
+          router.push('/admin');
+          return;
+        }
+      }
+      // Default redirect for non-admins
+      router.push('/tenant');
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
