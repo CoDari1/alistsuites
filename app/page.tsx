@@ -105,7 +105,7 @@ export default function HomePage() {
             </div>
             <div
                 ref={ctaRef}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto justify-center items-center sm:items-start"
             >
               <Link
                   href="/suites"
