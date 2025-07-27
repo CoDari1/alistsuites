@@ -1,34 +1,23 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+"use client";
+
 import "./globals.css";
-import Navbar from "@/components/navbar";
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "A-List Suites",
-  description: "The fastest way to build apps with Next.js and Supabase",
-};
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
-});
+import Navigation from "@/components/navbar";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const showNavbar =
+    !pathname.startsWith("/admin") && !pathname.startsWith("/tenant");
+
   return (
-    <html lang="en" suppressHydrationWarning className={'bg-stone-900'}>
-    <body className={`${geistSans.className} antialiased`}>
-          <Navbar />
-          {children}
+    <html lang="en" suppressHydrationWarning className={"bg-stone-900"}>
+      <body className="antialiased">
+        {showNavbar && <Navigation />}
+        {children}
       </body>
     </html>
   );
