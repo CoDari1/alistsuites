@@ -104,6 +104,7 @@ export default function Navigation() {
                             </Link>
                         ))}
                         <div className="py-3 px-4">
+                            <AuthButton />
                         </div>
                     </div>
                 </div>
