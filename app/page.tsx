@@ -78,7 +78,7 @@ export default function HomePage() {
       <div className="bg-[#2f2f38] text-white min-h-screen relative">
 
         {/* Hero Section */}
-        <section className="relative h-screen">
+        <section className="relative h-[60vh] sm:h-screen">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0">
             <Image
@@ -90,32 +90,32 @@ export default function HomePage() {
                 sizes="100vw"
             />
           </div>
-          <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+          <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-2 sm:px-4">
             <div
                 ref={heroRef}
-                className="text-6xl md:text-7xl font-bold mb-6"
+                className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 sm:mb-6"
             >
               A-List Salon Suites
             </div>
             <div
                 ref={textRef}
-                className="text-xl md:text-2xl mb-8 max-w-2xl"
+                className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-xl sm:max-w-2xl"
             >
               Your Business. Your Brand. Your Success.
             </div>
             <div
                 ref={ctaRef}
-                className="flex gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto"
             >
               <Link
                   href="/suites"
-                  className="bg-white text-[#2f2f38] px-6 py-3 rounded-md hover:bg-[#4a4a4f] hover:text-white transition-colors"
+                  className="bg-white text-[#2f2f38] px-4 sm:px-6 py-2 sm:py-3 rounded-md hover:bg-[#4a4a4f] hover:text-white transition-colors text-center"
               >
                 Explore Suites
               </Link>
               <Link
                   href="/apply"
-                  className="border border-white px-6 py-3 rounded-md hover:bg-white hover:text-[#2f2f38] transition-colors"
+                  className="border border-white px-4 sm:px-6 py-2 sm:py-3 rounded-md hover:bg-white hover:text-[#2f2f38] transition-colors text-center"
               >
                 Apply Now
               </Link>
@@ -124,21 +124,21 @@ export default function HomePage() {
         </section>
 
         {/* Featured Suites */}
-        <section className="py-20 px-4 bg-[#4a4a4f]">
+        <section className="py-10 sm:py-20 px-2 sm:px-4 bg-[#4a4a4f]">
           <div className="max-w-7xl mx-auto">
-            <div className="text-4xl font-bold mb-4 text-center">
+            <div className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-4 text-center">
               Featured Salon Suites
             </div>
-            <p className="text-gray-300 text-center max-w-3xl mx-auto mb-12">
+            <p className="text-gray-300 text-center max-w-xl sm:max-w-3xl mx-auto mb-6 sm:mb-12 text-base sm:text-lg">
               Premium spaces designed specifically for beauty professionals. Take control of your career with our all-inclusive salon suites.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
               {featuredSuites.map((suite, index) => (
                   <div
                       key={suite.id}
                       className="bg-[#2f2f38] rounded-lg overflow-hidden hover:transform hover:scale-[1.02] transition-transform duration-300"
                   >
-                    <div className="relative h-64">
+                    <div className="relative h-40 sm:h-64">
                       <Image
                           src={`https://picsum.photos/id/${365 + index}/800/600`}
                           alt={suite.name}
@@ -147,7 +147,7 @@ export default function HomePage() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6">
                       <div className="flex items-center mb-3">
                         {suite.icon}
                         <h3 className="text-xl font-bold ml-2">{suite.name}</h3>

@@ -110,7 +110,7 @@ export default function Suites() {
 	return (
 		<div className="min-h-screen bg-[#2f2f38] text-white">
 			{/* Hero section */}
-			<div className="relative h-[60vh] w-full">
+			<div className="relative h-48 sm:h-[60vh] w-full">
 				<Image
 					src="https://picsum.photos/id/175/1920/1080"
 					alt="A-List Salon Suites"
@@ -118,9 +118,9 @@ export default function Suites() {
 					style={{ objectFit: 'cover' }}
 					priority
 				/>
-				<div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white px-4">
+				<div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white px-2 sm:px-4">
 					<motion.h1
-						className="text-5xl md:text-6xl font-bold mb-4 text-center"
+						className="text-3xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 text-center"
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
@@ -128,7 +128,7 @@ export default function Suites() {
 						A-List Salon Suites
 					</motion.h1>
 					<motion.p
-						className="text-xl md:text-2xl text-center max-w-2xl"
+						className="text-base sm:text-xl md:text-2xl text-center max-w-xs sm:max-w-2xl"
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: 0.2 }}
@@ -139,12 +139,12 @@ export default function Suites() {
 			</div>
 
 			{/* About our suites */}
-			<section className="py-20 px-4 max-w-7xl mx-auto">
-				<div className="text-center mb-16">
-					<h2 className="text-4xl font-bold mb-6 text-white">
+			<section className="py-10 sm:py-20 px-2 sm:px-4 max-w-7xl mx-auto">
+				<div className="text-center mb-8 sm:mb-16">
+					<h2 className="text-2xl sm:text-4xl font-bold mb-3 sm:mb-6 text-white">
 						Elevate Your Career
 					</h2>
-					<p className="max-w-3xl mx-auto text-gray-300 text-lg">
+					<p className="max-w-md sm:max-w-3xl mx-auto text-gray-300 text-base sm:text-lg">
 						At A-List Salon Suites, we believe in empowering beauty professionals
 						to take control of their careers. Our luxury suites are designed to
 						provide the perfect environment for your business to thrive with no
