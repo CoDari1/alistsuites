@@ -23,7 +23,7 @@ export default function AdminMaintenancePage() {
                 .single();
             setAuthorized(data?.role === 'ADMIN');
         }
-        checkAdmin();
+        void checkAdmin();
     }, []);
 
     useEffect(() => {
@@ -33,11 +33,10 @@ export default function AdminMaintenancePage() {
                 .from('maintenance_requests')
                 .select('id, tenant_id, suite_id, description, status, created_at, resolved_at')
                 .order('created_at', { ascending: false });
-            if (error) setMaintenanceError(error.message);
             setMaintenance(data || []);
             setMaintenanceLoading(false);
         }
-        if (authorized) fetchMaintenance();
+        if (authorized) void fetchMaintenance();
     }, [authorized]);
 
     async function updateStatus(id: string, status: string) {
