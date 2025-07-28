@@ -75,7 +75,7 @@ export default function TenantPage() {
             <div className="w-full max-w-lg sm:max-w-3xl mx-auto">
                 <h1 className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-4 text-purple-300 text-center drop-shadow">Tenant Dashboard</h1>
                 <p className="text-base sm:text-lg mb-6 sm:mb-8 text-gray-300 text-center">Welcome to your dashboard. Here you can manage maintenance requests and view your suite details.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
                     {/* Suite Details Card */}
                     <div className="bg-[#23232b] rounded-2xl shadow-lg p-5 sm:p-8 flex flex-col items-start border border-purple-900/30 w-full">
                         <h2 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 text-purple-200 flex items-center gap-2">
@@ -110,6 +110,26 @@ export default function TenantPage() {
                             <div className="text-gray-400">You do not have a suite assigned yet. Please contact management if you believe this is an error.</div>
                         )}
                     </div>
+                </div>
+                {/* Lease Actions Card */}
+                <div className="bg-[#23232b] rounded-2xl shadow-lg p-5 sm:p-8 flex flex-col items-start border border-purple-900/30 w-full">
+                    <h2 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4 text-purple-200 flex items-center gap-2">
+                        Lease Agreement
+                    </h2>
+                    <a
+                        href="/Salon-Booth-Rental-Agreement-Form.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mb-3 bg-white text-purple-700 font-semibold px-4 py-2 rounded hover:bg-purple-100 transition"
+                    >
+                        View Lease
+                    </a>
+                    <button
+                        className="inline-block bg-gradient-to-r from-purple-700 to-purple-500 hover:from-purple-800 hover:to-purple-600 text-white font-bold px-4 py-2 rounded shadow transition"
+                        onClick={() => alert('Signature workflow coming soon!')}
+                    >
+                        Sign Lease
+                    </button>
                 </div>
             </div>
         </div>

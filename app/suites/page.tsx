@@ -422,7 +422,7 @@ export default function Suites() {
 			</section>
 
 			{/* FAQ Section */}
-			<section className="py-20 px-4 max-w-4xl mx-auto bg-[#4a4a4f]">
+			<section className="py-20 px-4 max-w-4xl mx-auto bg-[#4a4a4f] rounded-xl shadow-lg">
 				<h2 className="text-4xl font-bold mb-12 text-center text-white">
 					Common Questions
 				</h2>
@@ -471,7 +471,7 @@ export default function Suites() {
 			</section>
 
 			{/* Final CTA */}
-			<section className="bg-[#2f2f38] text-white py-16 px-4 border-t border-gray-800">
+			<section className="bg-[#2f2f38] text-white py-16 px-4">
 				<div className="max-w-4xl mx-auto text-center">
 					<h2 className="text-3xl font-bold mb-6">
 						Start Your A-List Journey Today
